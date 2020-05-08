@@ -53,3 +53,15 @@ tout cela est definie dans le fichier de configuration maven ``components.xml`` 
      </configuration>
 </component>
  ```
+
+Il est très important de définir clairement dans chaque POM les plugins ainsi que les versions utilisées pour le projet. 
+Ces informations assurent la stabilité du projet en cas de changement de version d’Apache Maven et donc, potentiellement, 
+des versions par défaut des plugins qui vont etre changé d'une version a une autre. 
+* Au niveau de l’élément <plugins>, sous-élément de <build> pour la construction du projet.
+  
+*  Au niveau de l’élément <pluginManagement> pour la gestion des plugins.
+
+
+The [super pom](https://maven.apache.org/ref/3.6.1/maven-model-builder/super-pom.html) defines some parts (folder structure) but the [life cycle binding](https://maven.apache.org/ref/3.6.1/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging) defines other parts like the binding to the appropriate life cycle phases. The [life cycle phases](https://maven.apache.org/ref/3.6.1/maven-core/lifecycles.html) itself are defined here.
+  
+The versions of the plugins depend on which version of Maven you are using cause the life cycle binding is being updated. If you like to be sure which version of a plugin is being used the best practice is to define all plugins you are using via pluginManagement in your pom which should be done in a corporate pom file to avoid duplication
