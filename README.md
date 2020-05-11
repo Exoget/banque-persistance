@@ -1,5 +1,5 @@
 # banque-persistance
-projet dans le cadre de la maîtrise maven
+C'est un projet type, qui sert a maîtriser maven.
 
 
 ##  Le mode commande de Maven
@@ -24,10 +24,11 @@ lancement du goal effective-pom du plugin help en passant une option avec le -D.
 
 ### plugins Maven
 
-le plugin est identifié au moment du lancement de la commande maven pour lancer une phase.
-a travers le type du projet ( jar, war ou bien ear ) le cycle est retourné avec la configuration
-de des plugin a utilisé. exemple la nom de plugin , la version dans une phase bien déterminé
-tout cela est definie dans le fichier de configuration maven ``components.xml`` sous le repertoire ``MAVEN_HOME/lib/maven-core-3.0.2.jar!META-INF/plexus/components.xml``.
+Le plugin est identifié au moment du lancement des commandes maven, en se basant sur le type du projet ( jar, war ou bien ear ),
+le cycle maven est retourné avec la configuration adéquat. Les plugins a utilisés leurs noms, leurs versions ainsi dans quelle phase ils
+sont rattachés. Tout cela est definie dans le fichier de configuration maven ``components.xml`` sous le repertoire ``MAVEN_HOME/lib/maven-core-3.0.2.jar!META-INF/plexus/components.xml``.
+
+Voivi le cycle DEFAULT pour un projet de type jar : 
 
 ```
 <component>
@@ -57,9 +58,10 @@ tout cela est definie dans le fichier de configuration maven ``components.xml`` 
 Il est très important de définir clairement dans chaque POM les plugins ainsi que les versions utilisées pour le projet. 
 Ces informations assurent la stabilité du projet en cas de changement de version d’Apache Maven et donc, potentiellement, 
 des versions par défaut des plugins qui vont etre changé d'une version a une autre. 
-* Au niveau de l’élément <plugins>, sous-élément de <build> pour la construction du projet.
+
+* Au niveau de l’élément ```<plugins>```, sous-élément de ```<build>``` pour la construction du projet.
   
-*  Au niveau de l’élément <pluginManagement> pour la gestion des plugins.
+*  Au niveau de l’élément ```<pluginManagement>``` pour la gestion des plugins.
 
 
 The [super pom](https://maven.apache.org/ref/3.6.1/maven-model-builder/super-pom.html) defines some parts (folder structure) but the [life cycle binding](https://maven.apache.org/ref/3.6.1/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging) defines other parts like the binding to the appropriate life cycle phases. The [life cycle phases](https://maven.apache.org/ref/3.6.1/maven-core/lifecycles.html) itself are defined here.
@@ -68,17 +70,18 @@ The versions of the plugins depend on which version of Maven you are using cause
 
 #### Recherche plugin
 Lors d'une recherche d'un plugin quelconque au moment d'un appel, maven va chercher dans deux endroits (groupID) differents selon la convension de nomage:
-* org.apache.maven.plugins ( les plugin maven) si le nom est de la forme `maven-${name}-plugin`.
+
+* ```org.apache.maven.plugins``` ( les plugin maven) si le nom est de la forme `maven-${name}-plugin`.
 
 exp : le plugin `clean`, `org.apache.maven.plugins:maven-clean-plugin`
 
-* org.codehaus.mojo si le nom est de la forme `${name}-maven-plugin`.
+* ```org.codehaus.mojo``` si le nom est de la forme `${name}-maven-plugin`.
 
-_**Il est possible d’inclure d’autres groupId dans cette recherche en configurant l’élément `<pluginGroups>` du fichier settings.xml.**_
+_*Il est possible d’inclure d’autres groupId dans cette recherche en configurant l’élément `<pluginGroups>` du fichier settings.xml.*_
 
 #### Configuration des plugins
-Par defaut chaque plugin possède sa propre configuration, par contre vi le ficher pom on peut modifier sa configuration initial.
-Vi un bloc de `<configuration>` pour plus d'information sur la conf il faut voir le site office Toute la documentation officielle  à l’adresse : http://maven.apache.org/plugins/.
+Par defaut chaque plugin possède sa propre configuration, par contre via le ficher pom on peut modifier sa configuration initial.
+Via un bloc de `<configuration>` pour plus d'information sur la conf il faut voir le site office Toute la documentation officielle  à l’adresse : http://maven.apache.org/plugins/.
 
 #### Ajouter un traitement à une phase autres à ceux qui sont par defaut
 Lors de l'excution d'un cycle maven, maven va lancer tous les goals qui sont définie par defaut pour chaque phase.
@@ -108,7 +111,7 @@ exp: ajouter le code source d'un projet dans le jar, cela est faisable grâce au
   </plugin>
 ``` 
 
-C’est le cas, pour le MOJO jar-no-fork qui est associé à la phase package comme je plugin jar, avec la valeur attach-source comme identifiant de ce traitement.
+C’est le cas, pour le MOJO ```jar-no-fork``` qui est associé à la phase ```package``` comme le plugin jar, avec la valeur attach-source comme identifiant de ce traitement (je peux mettre n'imorte quoi).
 
 ![cap1](screnshot/cap1.PNG) 
 
@@ -129,8 +132,8 @@ Il est aussi possible de surcharger la phase définie par défaut dans le MOJO d
 Maitenant le goal `jar-nor-fork` est attaché a la phase `verify`.
 
 Il est important de noter que tous les MOJO ne définissent pas obligatoirement de phase par défaut pour s’exécuter. 
-heursement le `jar-nor-fork` est configuré avec la phase package.
-Ainsi, **si dans le POM aucune phase du cycle n’est associée au goal, comme dans l’exemple précédent, celle-ci ne sera pas appelée et le traitement non effectué.**
+heursement le ``jar-nor-fork`` est configuré avec la phase ``package``.
+Ainsi, *si dans le POM aucune phase du cycle n’est associée au goal, comme dans l’exemple précédent, celle-ci ne sera pas appelée et le traitement non effectué.*
 
 ##  Les dependences Maven
 
