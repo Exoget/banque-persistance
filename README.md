@@ -4,6 +4,7 @@ Ce projet s'inscrit dans le cadre de la montée en comptenence sur Maven.
 
 ##  Le mode Ligne de commande
 Ils sont de la forme ```mvn [options] [<goal(s)>] [<phase(s)>]```.
+
 Voici un exemple qui montre la liste des options proposées :
 
 ```
@@ -21,7 +22,7 @@ cas d'utilisation :
 
 ```$ mvn help:effective-pom -Doutput=pom-complet.xml```
 
-Lancement du goal effective-pom du plugin help en passant une option avec le -D. 
+:eye_speech_bubble: Lancement du goal du goal help:effective-pom qui permet d'avoir un affichage du POM effectif du projet. Les informations affichées sont une combinaison du contenu du fichier POM, des POM parents et des profiles qui sont actifs. 
 
 ### Plugins Maven
 
@@ -57,7 +58,7 @@ Voivi le cycle DEFAULT pour un projet de type jar :
 </component>
  ```
 
-Il est très important de définir clairement dans chaque POM les plugins ainsi que les versions utilisées pour le projet. 
+:information_source Il est très important de définir clairement dans chaque POM les plugins ainsi que les versions utilisées pour le projet. 
 Ces informations assurent la stabilité du projet en cas de changement de version d’Apache Maven et donc, potentiellement, 
 des versions par défaut des plugins qui vont etre changé d'une version a une autre. 
 
