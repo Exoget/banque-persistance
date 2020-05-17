@@ -1,5 +1,5 @@
 # banque-persistance
-C'est un projet type, qui sert a maîtriser maven.
+Ce projet s'inscrit dans le cadre de la montée en comptenence sur Maven.
 
 
 ##  Le mode commande de Maven
