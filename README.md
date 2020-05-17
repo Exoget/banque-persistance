@@ -58,7 +58,7 @@ Voivi le cycle DEFAULT pour un projet de type jar :
 </component>
  ```
 
-:information_source Il est très important de définir clairement dans chaque POM les plugins ainsi que les versions utilisées pour le projet. 
+:information_source: Il est très important de définir clairement dans chaque POM les plugins ainsi que les versions utilisées pour le projet. 
 Ces informations assurent la stabilité du projet en cas de changement de version d’Apache Maven et donc, potentiellement, 
 des versions par défaut des plugins qui vont etre changé d'une version a une autre. 
 
