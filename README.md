@@ -2,8 +2,9 @@
 Ce projet s'inscrit dans le cadre de la montée en comptenence sur Maven.
 
 
-##  Le mode commande de Maven
-* ```mvn [options] [<goal(s)>] [<phase(s)>]```
+##  Le mode Ligne de commande
+Ils sont de la forme ```mvn [options] [<goal(s)>] [<phase(s)>]```.
+Voici un exemple qui montre la liste des options proposées :
 
 ```
   $ mvn --help 
@@ -16,13 +17,13 @@ Ce projet s'inscrit dans le cadre de la montée en comptenence sur Maven.
      -v,--version                  Display version information 
      ...
 ```
-exemple d'utilisation
+cas d'utilisation :
 
 ```$ mvn help:effective-pom -Doutput=pom-complet.xml```
 
-lancement du goal effective-pom du plugin help en passant une option avec le -D. 
+Lancement du goal effective-pom du plugin help en passant une option avec le -D. 
 
-### plugins Maven
+### Plugins Maven
 
 Le plugin est identifié au moment du lancement des commandes maven, en se basant sur le type du projet ( jar, war ou bien ear ),
 le cycle maven est retourné avec la configuration adéquat. Les plugins a utilisés leurs noms, leurs versions ainsi dans quelle phase ils
