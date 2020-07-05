@@ -149,3 +149,10 @@ Nous avons six types de dépendances :
 * import ( dépendance vers d'autre pom)
 
 on peut voir toute la liste des dépendances avec la commande maven `mvn dependency:tree`
+
+### héritage et les projets multimodules
+`POM parent` : appelé dans le langage Maven le **Corporate** POM (souvent identifié par un artifactId défini autour du mot-clé parent plus explicite).
+Ce type de projet (pom parent) possède un cycle de vie maven spécifique ( 1 install -> 2 deploy)
+`l’artefact de sortie est le fichier pom.xml qui sera déployé dans le référentiel local et le référentiel distant`. 
+
+`Reactor projet` : c'est fichier pom.xml de type pom a pour seul objectif de lister les projets qu’il identifie comme ses modules.
