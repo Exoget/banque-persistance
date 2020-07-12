@@ -150,9 +150,32 @@ Nous avons six types de dépendances :
 
 on peut voir toute la liste des dépendances avec la commande maven `mvn dependency:tree`
 
-### héritage et les projets multimodules
+### Héritage et les projets multimodules
 `POM parent` : appelé dans le langage Maven le **Corporate** POM (souvent identifié par un artifactId défini autour du mot-clé parent plus explicite).
 Ce type de projet (pom parent) possède un cycle de vie maven spécifique ( 1 install -> 2 deploy)
 `l’artefact de sortie est le fichier pom.xml qui sera déployé dans le référentiel local et le référentiel distant`. 
 
 `Reactor projet` : c'est fichier pom.xml de type pom a pour seul objectif de lister les projets qu’il identifie comme ses modules.
+
+##### Coté Pom.xml parent:
+`<dependencyManagement> `:
+C'est un point de centralisation pour la gestion des version, scope, and exclusion de dependences qui peuvenet etre utilisés dans les sous modules.
+( cad sans que cela soit automatiqument ajoutés dans les sous modules).
+Comme ca , on est sure que dans l'application on va utiliser les meme versions de dependances
+
+Ps : Si le module a besoin d'une dependence , il doit l'ajouter dans sa section <dependencies>, elle n'est pas disponible par defaut.
+
+`<dependencies>`
+Les dependences qui sont definies a ce niveau vont etre systemetiquement ajoutées dans les sous modules.
+
+`<pluginManagement>` élément pour les plugins « standard », c’est-à-dire les plugins officiels mis en œuvre dans les cycles de vie par défaut.
+
+`<plugins>` sous-élément direct de <build>, pour les autres plugins associés à des phases spécifiques des cycles de vie dans le POM.
+
+##### Coté Pom.xml module:
+
+`<dependencies>`, `<plugins>`
+on peut faire des appels direct des dependences qui sont dans le pom parent sans précisé leur version et scope.
+Toutefois il est possible de surchargé la definition par defaut du pom parent dans les poms des modules. 
+
+
