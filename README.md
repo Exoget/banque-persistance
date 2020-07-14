@@ -220,4 +220,4 @@ Pour le ```maven-compiler-plugin```, les déclarations suivantes permettent de c
        ... 
      </properties> 
 
-:information_source une propriété définie dans un POM parent peut être surchargée dans le POM enfant dans un premier temps, dans les fichiers settings.xml et enfin par le biais des options du mode commande.
+:information_source: une propriété définie dans un POM parent peut être surchargée dans le POM enfant dans un premier temps, dans les fichiers settings.xml et enfin par le biais des options du mode commande.
