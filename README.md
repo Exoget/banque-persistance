@@ -1,8 +1,8 @@
-# banque-persistance
+# banque-persistance:
 Ce projet s'inscrit dans le cadre de la montée en comptenence sur Maven.
 
 
-##  Le mode Ligne de commande
+##  Le mode Ligne de commande:
 Ils sont de la forme ```mvn [options] [<goal(s)>] [<phase(s)>]```.
 
 Voici un exemple qui montre la liste des options proposées :
@@ -24,7 +24,7 @@ cas d'utilisation :
 
 :eye_speech_bubble: Lancement du goal du goal help:effective-pom qui permet d'avoir un affichage du POM effectif du projet. Les informations affichées sont une combinaison du contenu du fichier POM, des POM parents et des profiles qui sont actifs. 
 
-### Plugins Maven
+## Plugins Maven:
 
 Le plugin est identifié au moment du lancement des commandes maven, en se basant sur le type du projet ( jar, war ou bien ear ),
 le cycle maven est retourné avec la configuration adéquat. Les plugins a utilisés leurs noms, leurs versions ainsi dans quelle phase ils
@@ -71,7 +71,7 @@ The [super pom](https://maven.apache.org/ref/3.6.1/maven-model-builder/super-pom
   
 The versions of the plugins depend on which version of Maven you are using cause the life cycle binding is being updated. If you like to be sure which version of a plugin is being used the best practice is to define all plugins you are using via pluginManagement in your pom which should be done in a corporate pom file to avoid duplication
 
-#### Recherche plugin
+### Recherche plugin:
 Lors d'une recherche d'un plugin quelconque au moment d'un appel, maven va chercher dans deux endroits (groupID) differents selon la convension de nomage:
 
 * ```org.apache.maven.plugins``` ( les plugin maven) si le nom est de la forme `maven-${name}-plugin`.
@@ -82,11 +82,11 @@ exp : le plugin `clean`, `org.apache.maven.plugins:maven-clean-plugin`
 
 _*Il est possible d’inclure d’autres groupId dans cette recherche en configurant l’élément `<pluginGroups>` du fichier settings.xml.*_
 
-#### Configuration des plugins
+### Configuration des plugins:
 Par defaut chaque plugin possède sa propre configuration, par contre via le ficher pom on peut modifier sa configuration initial.
 Via un bloc de `<configuration>` pour plus d'information sur la conf il faut voir le site office Toute la documentation officielle  à l’adresse : http://maven.apache.org/plugins/.
 
-#### Ajouter un traitement à une phase autres à ceux qui sont par defaut
+#### Ajouter un traitement à une phase autres à ceux qui sont par defaut:
 Lors de l'excution d'un cycle maven, maven va lancer tous les goals qui sont définie par defaut pour chaque phase.
 il arrive parfois qu'on veut ajouter un traitement spécifique dans une phase bien déterminée dans un projet,
 Il est ainsi possible d’ajouter des traitements grâce à l’exécution de goals de plugins sur une phase du cycle.
@@ -138,7 +138,7 @@ Il est important de noter que tous les MOJO ne définissent pas obligatoirement 
 heursement le ``jar-nor-fork`` est configuré avec la phase ``package``.
 Ainsi, *si dans le POM aucune phase du cycle n’est associée au goal, comme dans l’exemple précédent, celle-ci ne sera pas appelée et le traitement non effectué.*
 
-##  Les dependences Maven
+##  Les dependences Maven:
 
 Nous avons six types de dépendances :
 * compile ( disponibles partout )
@@ -150,14 +150,20 @@ Nous avons six types de dépendances :
 
 on peut voir toute la liste des dépendances avec la commande maven `mvn dependency:tree`
 
-### Héritage et les projets multimodules
-`POM parent` : appelé dans le langage Maven le **Corporate** POM (souvent identifié par un artifactId défini autour du mot-clé parent plus explicite).
+## Héritage et les projets multimodules:
+
+#### POM parent:
+Appelé dans le langage Maven le **Corporate** POM (souvent identifié par un artifactId défini autour du mot-clé parent plus explicite).
 Ce type de projet (pom parent) possède un cycle de vie maven spécifique ( 1 install -> 2 deploy)
 `l’artefact de sortie est le fichier pom.xml qui sera déployé dans le référentiel local et le référentiel distant`. 
 
-`Reactor projet` : c'est fichier pom.xml de type pom a pour seul objectif de lister les projets qu’il identifie comme ses modules.
+#### Reactor projet: 
+C'est fichier pom.xml de type pom a pour seul objectif de lister les projets qu’il identifie comme ses modules.
 
-##### Coté Pom.xml parent:
+#### Gestion dependences et plugins:
+
+* `Au niveau Pom.xml parent:`
+
 `<dependencyManagement> `:
 C'est un point de centralisation pour la gestion des version, scope, and exclusion de dependences qui peuvenet etre utilisés dans les sous modules.
 ( cad sans que cela soit automatiqument ajoutés dans les sous modules).
@@ -172,7 +178,7 @@ Les dependences qui sont definies a ce niveau vont etre systemetiquement ajouté
 
 `<plugins>` sous-élément direct de <build>, pour les autres plugins associés à des phases spécifiques des cycles de vie dans le POM.
 
-##### Coté Pom.xml module:
+* `Au niveau Pom.xml module`:
 
 `<dependencies>`, `<plugins>`
 on peut faire des appels direct des dependences qui sont dans le pom parent sans précisé leur version et scope.
