@@ -182,6 +182,42 @@ Les dependences qui sont definies a ce niveau vont etre systemetiquement ajouté
 
 `<dependencies>`, `<plugins>`
 on peut faire des appels direct des dependences qui sont dans le pom parent sans précisé leur version et scope.
-Toutefois il est possible de surchargé la definition par defaut du pom parent dans les poms des modules. 
+Toutefois il est possible de surchargé la definition par defaut du pom parent dans les poms des modules.
 
+## Les propriétés du POM
 
+#### Les propriétés disponibles
+Tous les éléments simples du POM sont accessibles à partir du préfixe ```${project.*}``` : exp : 
+```${project.artifactId}``` ou meme ```${project.version}``` ....
+
+```${basedir}``` : permet d’accéder au chemin racine du projet
+```${env.*}``` : permet d’accéder aux variables d’environnement du système
+
+#### Les propriétés utilisateurs
+sont definies dans la section `<properties>` 
+```<spring.framework.version>5.1.6.RELEASE</spring.framework.version>```
+
+Et pour l'utilisation c'est fait de la maniere suivante:
+
+	
+	<dependency> 
+	   <groupId>org.springframework</groupId> 
+	   <artifactId>spring-context</artifactId> 
+	   <version>${spring.framework.version}</version> 
+	</dependency>
+	 
+
+#### Les propriétés des plugins
+exp : la propiété ```${project.build.sourceEncoding}``` qui est commune à une majorité de plugins.
+Pour le ```maven-compiler-plugin```, les déclarations suivantes permettent de configurer les éléments de base du plugin.
+   
+    
+    <properties> 
+       ... 
+       <maven.compiler.source>1.8</maven.compiler.source> 
+       <maven.compiler.target>1.8</maven.compiler.target> 
+       <maven.compiler.optimize>true</maven.compiler.optimize> 
+       ... 
+     </properties> 
+
+:information_source une propriété définie dans un POM parent peut être surchargée dans le POM enfant dans un premier temps, dans les fichiers settings.xml et enfin par le biais des options du mode commande.
