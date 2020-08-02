@@ -220,4 +220,15 @@ Pour le ```maven-compiler-plugin```, les déclarations suivantes permettent de c
        ... 
      </properties> 
 
-:information_source: une propriété définie dans un POM parent peut être surchargée dans le POM enfant dans un premier temps, dans les fichiers settings.xml et enfin par le biais des options du mode commande.
+:information_source: une propriété définie dans un POM parent peut être surchargée dans le POM enfant dans un premier temps, dans les fichiers settings.xml (lacal et global) et enfin par le biais des options du mode commande ( c'est dans cette ordre que maven va prenndre la derniere valeur pour la propriété).
+
+* Les valeurs des propriétés définies dans le POM peuvent être insérées dans les fichiers de configuration des projets. Ce processus est communément appelé le filtrage des ressources.
+
+```
+    <resources> 
+        <resource> 
+          <directory>src/main/resources</directory>  
+          <filter>true</filter> 
+        </resource>  
+     </resources> 
+```
