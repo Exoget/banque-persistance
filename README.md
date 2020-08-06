@@ -138,19 +138,6 @@ Il est important de noter que tous les MOJO ne définissent pas obligatoirement 
 heursement le ``jar-nor-fork`` est configuré avec la phase ``package``.
 Ainsi, *si dans le POM aucune phase du cycle n’est associée au goal, comme dans l’exemple précédent, celle-ci ne sera pas appelée et le traitement non effectué.*
 
-##  Les dependences Maven:
-
-Nous avons six types de dépendances :
-* compile ( disponibles partout )
-* runtime ( n'est pas nécessaire à la compilation mais à l'execution )
-* provided ( au moment de l'execution elle sera fourni soit par la JDK soit par le Server d'application )
-* test (disponible suelement pour les tests unitaires)
-* systeme ( disponible en local dans les machines cibles)
-* import ( dépendance vers d'autre pom)
-
-on peut voir toute la liste des dépendances avec la commande maven `mvn dependency:tree`
-
-
 ##### Remarque : pour les projet type pom il faut vérifier ce point ( le clean )
 
 ```
@@ -162,6 +149,18 @@ on peut voir toute la liste des dépendances avec la commande maven `mvn depende
                 </configuration>
             </plugin>
 ```
+
+##  Les dependences Maven:
+
+Nous avons six types de dépendances :
+* compile ( disponibles partout )
+* runtime ( n'est pas nécessaire à la compilation mais à l'execution )
+* provided ( au moment de l'execution elle sera fourni soit par la JDK soit par le Server d'application )
+* test (disponible suelement pour les tests unitaires)
+* systeme ( disponible en local dans les machines cibles)
+* import ( dépendance vers d'autre pom)
+
+on peut voir toute la liste des dépendances avec la commande maven `mvn dependency:tree`
 
 ## Héritage et les projets multimodules:
 
