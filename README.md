@@ -150,6 +150,19 @@ Nous avons six types de dépendances :
 
 on peut voir toute la liste des dépendances avec la commande maven `mvn dependency:tree`
 
+
+##### Remarque : pour les projet type pom il faut vérifier ce point ( le clean )
+
+```
+<!-- nettoyage : comme on a un packaging pom.xml, target n'est pas détruit par le clean standard, on le rajoute donc ici -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+```
+
 ## Héritage et les projets multimodules:
 
 #### POM parent:
