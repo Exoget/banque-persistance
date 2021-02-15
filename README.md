@@ -82,6 +82,11 @@ exp : le plugin `clean`, `org.apache.maven.plugins:maven-clean-plugin`
 
 _*Il est possible d’inclure d’autres groupId dans cette recherche en configurant l’élément `<pluginGroups>` du fichier settings.xml.*_
 
+
+*Remarque :*
+Mojo, pour Maven old java object, est le nom donné à un goal défini par un plugin.
+il faut toujours pensé qu'un plugin peut regroupé plusieurs goal, donc mojos.
+
 ### Configuration des plugins:
 Par defaut chaque plugin possède sa propre configuration, par contre via le ficher pom on peut modifier sa configuration initial.
 Via un bloc de `<configuration>` pour plus d'information sur la conf il faut voir le site office Toute la documentation officielle  à l’adresse : http://maven.apache.org/plugins/.
@@ -170,7 +175,7 @@ Ce type de projet (pom parent) possède un cycle de vie maven spécifique ( 1 in
 `l’artefact de sortie est le fichier pom.xml qui sera déployé dans le référentiel local et le référentiel distant`. 
 
 #### Reactor projet: 
-C'est fichier pom.xml de type pom a pour seul objectif de lister les projets qu’il identifie comme ses modules.
+**Reactor** c'est fichier pom.xml de type pom a pour seul objectif de lister les projets qu’il identifie comme ses modules.
 
 #### Gestion dependences et plugins:
 
@@ -244,3 +249,29 @@ Pour le ```maven-compiler-plugin```, les déclarations suivantes permettent de c
         </resource>  
      </resources> 
 ```
+
+#### Profiles
+```
+	<profile>
+		<id></id>
+		<activation></activation>
+		<properties></properties>
+	</profile>
+```
+	
+Peut etre déclaré dans le fichier ```settings.xml``` ou bien ```pom.xml```.
+L'odre conseillée pour l'element ```<profile>``` doit etre le dernier element de configuration.
+Il est utilisé dans le fichier ```settings.xml``` pour définir le référentiel destiné à la recherche des artefacts.
+
+* `Activation profil`:
+1- Ligne de commande -P : active profile ( par son Id )
+2- Dans le fichier ```settings.xml``` balise <activeProfiles> : List of profiles that are active for all builds.
+3- Par existence ou absence d'un fichier dans le projet.
+4- par systeme d'exploitation ( OS  : sur lequel maven s'execute )
+5- par version jdk
+6- absence propriété ou égalité sur la valeur d'une propriété.   
+
+* Il ne peut y avoir qu'une seule d'activation par profile* ( un seule methode ).
+
+On peut activer un profile par defaut en utilisant la balise <>activationByDefault>, *cette methode est déconseillé car*
+*a partir du momoment ou un autre profile est activé, le profile par defaut se désactive*.
