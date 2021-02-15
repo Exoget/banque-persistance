@@ -191,9 +191,12 @@ Ps : Si le module a besoin d'une dependence , il doit l'ajouter dans sa section 
 `<dependencies>`
 Les dependences qui sont definies a ce niveau vont etre systemetiquement ajoutées dans les sous modules.
 
-`<pluginManagement>` élément pour les plugins « standard », c’est-à-dire les plugins officiels mis en œuvre dans les cycles de vie par défaut.
+`<pluginManagement>` éléments pour les plugins « standard », c’est-à-dire les plugins officiels mis en œuvre dans les cycles de vie par défaut.
+``` pluginManagement: is an element that is seen along side plugins. Plugin Management contains plugin elements in much the same way, except that rather than configuring plugin information for this particular project build, it is intended to configure project builds that inherit from this one. However, this only configures plugins that are actually referenced within the plugins element in the children. The children have every right to override pluginManagement definitions.```
+
 
 `<plugins>` sous-élément direct de <build>, pour les autres plugins associés à des phases spécifiques des cycles de vie dans le POM.
+``` <plugins/> is a section for the actual invocation of the plugins. It may or may not be inherited from a <pluginManagement/>.```
 
 * `Au niveau Pom.xml module`:
 
