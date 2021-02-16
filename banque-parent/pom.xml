@@ -644,12 +644,15 @@
 						<groupId>org.apache.tomcat.maven</groupId>
 						<artifactId>tomcat7-maven-plugin</artifactId>
 						<configuration>
-							<url>http://tomcat.elanglet.local/manager/text</url>
+							<url>http://localhost:8080/manager/text</url>
 							<server>tomcat-srv</server>
 							<path>/${project.build.finalName}</path>
+							<!--
+							user shoud be <role rolename="manager-script"/>
+							configuration is within settings.xml file
+							-->
 							<update>true</update>
 						</configuration>
-
 					</plugin>
 				</plugins>
 			</build>
