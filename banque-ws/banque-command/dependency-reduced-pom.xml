@@ -29,6 +29,8 @@
                   <include>fr.eni.mvnbook*:*</include>
                 </includes>
               </artifactSet>
+              <shadedArtifactAttached>false</shadedArtifactAttached>
+              <shadedClassifierName>external</shadedClassifierName>
             </configuration>
           </execution>
         </executions>
@@ -47,12 +49,6 @@
           <groupId>org.hamcrest</groupId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.177</version>
-      <scope>runtime</scope>
     </dependency>
   </dependencies>
 </project>

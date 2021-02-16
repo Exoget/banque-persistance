@@ -278,3 +278,9 @@ Il est utilisé dans le fichier ```settings.xml``` pour définir le référentie
 
 On peut activer un profile par defaut en utilisant la balise <>activationByDefault>, *cette methode est déconseillé car*
 *a partir du momoment ou un autre profile est activé, le profile par defaut se désactive*.
+
+###### Packaging
+
+* shade JAR : *
+C'est un jar complet il regroupe les classes du projet principal ainsi les classes des projets de dependances.
+Le but de le rendre totalement independant autonome vis-à-vis des serveurs d'applications Java ( voir le livre 3.4.1).
