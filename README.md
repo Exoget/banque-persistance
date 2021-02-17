@@ -373,21 +373,22 @@ Peut etre déclaré dans le fichier ```settings.xml``` ou bien ```pom.xml```.
 L'odre conseillée pour l'element ```<profile>``` doit etre le dernier element de configuration.
 Il est utilisé dans le fichier ```settings.xml``` pour définir le référentiel destiné à la recherche des artefacts.
 
-* `Activation profil`:
-1- Ligne de commande -P : active profile ( par son Id )
-2- Dans le fichier ```settings.xml``` balise <activeProfiles> : List of profiles that are active for all builds.
-3- Par existence ou absence d'un fichier dans le projet.
-4- par systeme d'exploitation ( OS  : sur lequel maven s'execute )
-5- par version jdk
-6- absence propriété ou égalité sur la valeur d'une propriété.   
+##### Activation profil:
+* Ligne de commande -P : active profile ( par son Id )
+* Dans le fichier ```settings.xml``` balise <activeProfiles> : List of profiles that are active for all builds.
+* Par existence ou absence d'un fichier dans le projet.
+* par systeme d'exploitation ( OS  : sur lequel maven s'execute )
+* par version jdk
+* absence propriété ou égalité sur la valeur d'une propriété.   
 
-* Il ne peut y avoir qu'une seule d'activation par profile* ( un seule methode ).
+Il ne peut y avoir qu'une seule d'activation par profile* ( un seule methode ).
 
-On peut activer un profile par defaut en utilisant la balise <>activationByDefault>, *cette methode est déconseillé car*
-*a partir du momoment ou un autre profile est activé, le profile par defaut se désactive*.
+On peut activer un profile par defaut en utilisant la balise <>activationByDefault>, *cette methode est déconseillé car a partir du momoment ou un autre profile est activé, le profile par defaut se désactive*.
 
-###### Packaging
+##### Packaging
 
-* shade JAR : *
-C'est un jar complet il regroupe les classes du projet principal ainsi les classes des projets de dependances.
-Le but de le rendre totalement independant autonome vis-à-vis des serveurs d'applications Java ( voir le livre 3.4.1).
+###### shade JAR :
+* C'est un jar complet il regroupe les classes du projet principal ainsi les classes des projets de dependances.
+* Le but de le rendre totalement independant autonome vis-à-vis des serveurs d'applications Java ( voir le livre 3.4.1).
+###### archive ( zip / tar ...) :
+* Le Plugin Assembly permet de créer une archive a plusieurs formats. 
