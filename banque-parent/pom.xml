@@ -10,7 +10,7 @@
 
 	<name>banque-parent</name>
 	<description>Corporate POM pour le projet Banque</description>
-	<url>https://mvnbook.elanglet.local/sites/banque-parent</url>
+	<url>https://github.com/Exoget/banque-persistance</url>
 	<inceptionYear>2019</inceptionYear>
 
 	<properties>
@@ -84,26 +84,26 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:http://gitlab.icjava.local/mvnbook/banque-parent.git</connection>
-		<developerConnection>scm:git:ssh://gitlab.icjava.local/mvnbook/banque-parent.git</developerConnection>
+		<connection>scm:git:https://github.com/Exoget/banque-persistance.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:Exoget/banque-persistance.git</developerConnection>
 	</scm>
 
-	<distributionManagement>
-		<repository>
-			<id>nexus</id>
-			<name>Référentiel Releases</name>
-			<url>${url.dist.releases}</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus</id>
-			<name>Référentiel Snapshots</name>
-			<url>${url.dist.snapshots}</url>
-		</snapshotRepository>
-		<site>
-			<id>mvnbook.elanglet.local</id>
-			<url>${url.dist.sites}</url>
-		</site>
-	</distributionManagement>
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<id>nexus</id>-->
+<!--			<name>Référentiel Releases</name>-->
+<!--			<url>${url.dist.releases}</url>-->
+<!--		</repository>-->
+<!--		<snapshotRepository>-->
+<!--			<id>nexus</id>-->
+<!--			<name>Référentiel Snapshots</name>-->
+<!--			<url>${url.dist.snapshots}</url>-->
+<!--		</snapshotRepository>-->
+<!--		<site>-->
+<!--			<id>mvnbook.elanglet.local</id>-->
+<!--			<url>${url.dist.sites}</url>-->
+<!--		</site>-->
+<!--	</distributionManagement>-->
 
 <!-- 	<repositories> -->
 <!-- 		<repository> -->

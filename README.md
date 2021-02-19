@@ -143,18 +143,6 @@ Il est important de noter que tous les MOJO ne définissent pas obligatoirement 
 heursement le ``jar-nor-fork`` est configuré avec la phase ``package``.
 Ainsi, *si dans le POM aucune phase du cycle n’est associée au goal, comme dans l’exemple précédent, celle-ci ne sera pas appelée et le traitement non effectué.*
 
-##### Remarque : pour les projet type pom il faut vérifier ce point ( le clean )
-
-```
-<!-- nettoyage : comme on a un packaging pom.xml, target n'est pas détruit par le clean standard, on le rajoute donc ici -->
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <configuration>
-                    <failOnError>false</failOnError>
-                </configuration>
-            </plugin>
-```
-
 ##  Les dependences Maven:
 
 Nous avons six types de dépendances :
