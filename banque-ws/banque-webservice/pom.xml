@@ -45,38 +45,42 @@
 
 	<build>
 		<finalName>banque-webservice</finalName>
-<!-- 		<plugins> -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-failsafe-plugin</artifactId> -->
-<!-- 			</plugin> -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.tomcat.maven</groupId> -->
-<!-- 				<artifactId>tomcat7-maven-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<url>http://tomcat.elanglet.local/manager/text</url> -->
-<!-- 					<server>tomcat-srv</server> -->
-<!-- 					<path>/${project.build.finalName}</path> -->
-<!-- 					<update>true</update> -->
-<!-- 				</configuration> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>deploy-ws</id> -->
-<!-- 						<phase>pre-integration-test</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>deploy-only</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<id>undeploy-ws</id> -->
-<!-- 						<phase>post-integration-test</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>undeploy</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-<!-- 		</plugins> -->
+ 		<plugins>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-failsafe-plugin</artifactId>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.tomcat.maven</groupId>
+ 				<artifactId>tomcat7-maven-plugin</artifactId>
+ 				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcat-srv</server>
+					<path>/${project.build.finalName}</path>
+					<!--
+                    user shoud be <role rolename="manager-script"/>
+                    configuration is within settings.xml file
+                    -->
+					<update>true</update>
+ 				</configuration>
+ 				<executions>
+ 					<execution>
+ 						<id>deploy-ws</id>
+ 						<phase>pre-integration-test</phase>
+ 						<goals>
+ 							<goal>deploy-only</goal>
+ 						</goals>
+ 					</execution>
+ 					<execution>
+ 						<id>undeploy-ws</id>
+ 						<phase>post-integration-test</phase>
+ 						<goals>
+ 							<goal>undeploy</goal>
+ 						</goals>
+ 					</execution>
+ 				</executions>
+ 			</plugin>
+ 		</plugins>
 	</build>
 
 </project>
