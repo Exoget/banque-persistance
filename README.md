@@ -379,4 +379,61 @@ On peut activer un profile par defaut en utilisant la balise <>activationByDefau
 * C'est un jar complet il regroupe les classes du projet principal ainsi les classes des projets de dependances.
 * Le but de le rendre totalement independant autonome vis-à-vis des serveurs d'applications Java ( voir le livre 3.4.1).
 ###### archive ( zip / tar ...) :
-* Le Plugin Assembly permet de créer une archive a plusieurs formats. 
+* Le Plugin Assembly permet de créer une archive a plusieurs formats.
+
+### Maven et Test 
+
+#### tests unitaires
+C'est lié à la phase *test* de cycle de vie par defaut. Point d'entree pour les test unitaire maven. 
+
+* ${project.basedir}/src/test/java
+* ${project.basedir}/src/test/resources
+
+Le plugin utilisé pour lancer ces test : c'est ```maven-surefire-plugin``` ( goals : ```surefire:test``` ), le rapport sera dans ```${basedir}/target/surefire-reports```.
+
+Le plugin est configuré pour chercher les classes suivantes :
+- **/Test*.java
+- **/*Test.java
+- **/*TestCase.java
+
+
+Il est possible de lancer qu'une class dans la phase test, ou meme q'une seule methode dans une calsse.
+* ```mvn -Dtest=MaClass#methode test```
+
+
+#### test d'integration
+C'est lié aux phases ci desous (cycle de vie par defaut)  :
+* *pre-integration-test*
+* *integration-test*
+* *post-integration-test*
+
+Le plugin utiliser pour lancer ces test : c'est ```maven-failsafe-plugin``` ( goals: ```integration-test```, ```verify``` ).
+il partage les meme repertoire que les test uniataire.
+
+* ${project.basedir}/src/test/java
+* ${project.basedir}/src/test/resources
+
+
+Remarque : Il faut appeler tjr le goal *verify* pour remettre l'environement de test dans un état stable.
+
+Le plugin est configuré pour chercher les classes suivantes :
+- **/IT*.java
+- **/*IT.java
+- **/*ITCase.java
+
+#### partage des classe et configuration de test entre modules et projet
+
+Il est parfois utile de partager une configuration de test ou des classes de test entre modules lors de lancements de test ( uniatire, integration )
+pour ne pas dupliquer les meme fichiers. pour cela le projet qui contient ces fichiers doit utiliser le plugin ```maven-jar-plugin```, le MOJO ```jar:test-jar``` va générer et deployer le meme jar du rojet initaial ( mais classifier : -tests ) contenant suelement ce qu'on veut avoir: voir exemple livre maven ).
+Ainsi le module qui va utiliser cette configuration doit ajouter ce nouveau jar dans ca liste de dependance.
+
+#### Tests parameteres
+* -Dmaven.test.skip=true : annuler l'exécution des test unitaires.
+* -DfailIfNoTest=true : le projet doit avoir des test unitaires sinon une exception sera declanchée.
+* -DskipITs=true : annuler l'exécution des test d'integration mais par leur compilation.
+* -DtestFailureIgnore=true : Ignore l'echec des tests unitaires.
+
+#### Release
+Lors s'une release maven utilise les goal du plugin scm (checkin, sheckout, add ..) , c'est pour ca il faut declare le bloc <scm> dans le pom.
+
+a vérifeir !! 
