@@ -348,7 +348,7 @@ Pour le ```maven-compiler-plugin```, les déclarations suivantes permettent de c
      </resources> 
 ```
 
-#### Profiles
+## Profiles
 ```
 	<profile>
 		<id></id>
@@ -361,7 +361,7 @@ Peut etre déclaré dans le fichier ```settings.xml``` ou bien ```pom.xml```.
 L'odre conseillée pour l'element ```<profile>``` doit etre le dernier element de configuration.
 Il est utilisé dans le fichier ```settings.xml``` pour définir le référentiel destiné à la recherche des artefacts.
 
-##### Activation profil:
+#### Activation profil:
 * Ligne de commande -P : active profile ( par son Id )
 * Dans le fichier ```settings.xml``` balise <activeProfiles> : List of profiles that are active for all builds.
 * Par existence ou absence d'un fichier dans le projet.
@@ -373,15 +373,15 @@ Il ne peut y avoir qu'une seule d'activation par profile* ( un seule methode ).
 
 On peut activer un profile par defaut en utilisant la balise <>activationByDefault>, *cette methode est déconseillé car a partir du momoment ou un autre profile est activé, le profile par defaut se désactive*.
 
-##### Packaging
+## Packaging
 
-###### shade JAR :
+#### shade JAR :
 * C'est un jar complet il regroupe les classes du projet principal ainsi les classes des projets de dependances.
 * Le but de le rendre totalement independant autonome vis-à-vis des serveurs d'applications Java ( voir le livre 3.4.1).
-###### archive ( zip / tar ...) :
+#### archive ( zip / tar ...) :
 * Le Plugin Assembly permet de créer une archive a plusieurs formats.
 
-### Maven et Test 
+## Maven et Test 
 
 #### tests unitaires
 C'est lié à la phase *test* de cycle de vie par defaut. Point d'entree pour les test unitaire maven. 
@@ -433,7 +433,7 @@ Ainsi le module qui va utiliser cette configuration doit ajouter ce nouveau jar 
 * -DskipITs=true : annuler l'exécution des test d'integration mais par leur compilation.
 * -DtestFailureIgnore=true : Ignore l'echec des tests unitaires.
 
-#### Release
+## Release
 Lors s'une release maven utilise les goal du plugin scm (checkin, sheckout, add ..) , c'est pour ca il faut declare le bloc <scm> dans le pom.
 
 a vérifeir !! 
