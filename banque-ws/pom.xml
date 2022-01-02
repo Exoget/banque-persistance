@@ -10,6 +10,7 @@
         <relativePath>../banque-parent</relativePath>
     </parent>
 
+    <!--   Reactor  Pom  -->
     <artifactId>banque-ws</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
