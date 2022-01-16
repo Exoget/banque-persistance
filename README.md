@@ -191,8 +191,11 @@ _*Il est possible d’inclure d’autres groupId dans cette recherche en configu
 
 
 *Remarque :*
-Mojo, pour Maven old java object, est le nom donné à un goal défini par un plugin.
-il faut toujours pensé qu'un plugin peut regroupé plusieurs goal, donc mojos.
+```Mojo, pour Maven old java object, est le nom donné à un goal défini par un plugin.
+Il faut toujours penser qu'un plugin peut regrouper plusieurs goals, donc mojos.
+```
+What is a Mojo? A mojo is a Maven plain Old Java Object. Each mojo is an executable goal in Maven, and a plugin is a distribution of one or more related mojos.
+In short, a mojo is a maven goal, to extend functionality not already found in maven.
 
 ### Configuration des plugins:
 Par defaut chaque plugin possède sa propre configuration, par contre via le ficher pom on peut modifier sa configuration initial.
@@ -369,17 +372,20 @@ Il est utilisé dans le fichier ```settings.xml``` pour définir le référentie
 * par version jdk
 * absence propriété ou égalité sur la valeur d'une propriété.   
 
-Il ne peut y avoir qu'une seule d'activation par profile* ( un seule methode ).
+:warning: Il ne peut y avoir qu'une seule d'activation par profile* ( un seule methode ).
 
-On peut activer un profile par defaut en utilisant la balise <>activationByDefault>, *cette methode est déconseillé car a partir du momoment ou un autre profile est activé, le profile par defaut se désactive*.
+On peut activer un profile par defaut en utilisant la balise ```<activationByDefault>```.
+:warning: Cette methode est déconseillé, car à partir du moment ou un autre profile est activé, le profile par defaut se désactive*.
 
+* liste de profiles dans le projet : ```mvn help:all-profiles```
+* liste de profiles activés : ```mvn help:activate-profiles```
 ## Packaging
 
 #### shade JAR :
-* C'est un jar complet il regroupe les classes du projet principal ainsi les classes des projets de dependances.
-* Le but de le rendre totalement independant autonome vis-à-vis des serveurs d'applications Java ( voir le livre 3.4.1).
+* C'est un jar complet, il regroupe les classes du projet principal ainsi les classes des projets de dependence.
+* Le but de le rendre totalement independent autonome vis-à-vis des serveurs d'applications Java (voir le livre 3.4.1).
 #### archive ( zip / tar ...) :
-* Le Plugin Assembly permet de créer une archive a plusieurs formats.
+* Le Plugin Assembly permet de créer une archive à plusieurs formats.
 
 ## Maven et Test 
 
