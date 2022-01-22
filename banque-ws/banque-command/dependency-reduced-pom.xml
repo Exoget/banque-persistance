@@ -30,7 +30,7 @@
                 </includes>
               </artifactSet>
               <shadedArtifactAttached>false</shadedArtifactAttached>
-              <shadedClassifierName>external</shadedClassifierName>
+              <shadedClassifierName>classifier</shadedClassifierName>
             </configuration>
           </execution>
         </executions>

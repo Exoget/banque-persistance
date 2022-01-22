@@ -47,7 +47,12 @@
                                     <include>fr.eni.mvnbook*:*</include>
                                 </includes>
                             </artifactSet>
-                            <!-- pour avoir les deux jar, le complet "shade" nommé avec le classifier ,et l'original -->
+                            <!-- Pour avoir les deux jars, le complet (shade) avec le classifier et l'original.
+                                 Ce mode est utilisé dans le cas ou un projet X a besoin seulement de la version originale
+                                 du jar et non pas celui avec les classes de dependence.
+                                 Pour cela on génère les deux pour rendre possible les deux cas utilisation.
+                                 Dans le référentiel Nexus on va trouver les deux !
+                            -->
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <shadedClassifierName>classifier</shadedClassifierName>
                         </configuration>
