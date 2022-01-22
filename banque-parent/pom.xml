@@ -23,7 +23,7 @@
         <hibernate.version>5.4.2.Final</hibernate.version>
         <junit.version>4.13.1</junit.version>
         <el-impl.version>2.2</el-impl.version>
-        <h2.version>2.0.202</h2.version>
+        <h2.version>2.1.210</h2.version>
         <mysql.connector.version>8.0.16</mysql.connector.version>
         <mockito.version>2.25.1</mockito.version>
         <assertj.version>3.11.1</assertj.version>
