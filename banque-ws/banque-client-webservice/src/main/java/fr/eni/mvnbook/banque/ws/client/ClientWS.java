@@ -16,6 +16,7 @@ public class ClientWS {
 
 			BanqueWebservice service = proxy.getBanqueWebServiceImplPort();
 
+			// Il faut utiliser id, password !
 			Client client = service.auth("ROBERT", "DUPONT");
 			
 			System.out.println("Client authentifié : " + client.getId());
