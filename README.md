@@ -1,6 +1,6 @@
 # banque-persistance:
 Ce projet s'inscrit dans le cadre de la montée en comptenence sur Maven.
-
+La version utilisée dans ce projet est la 3.6
 ### LifeCycle
 
 La construction d'un projet Maven suit un cycle de vie bien sépécifique, il y a trois cycle maven:
