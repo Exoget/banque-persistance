@@ -1,0 +1,62 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 http://maven.apache.org/xsd/assembly-2.1.0.xsd">
+
+    <id>bin</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <baseDirectory>/</baseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <outputDirectory>doc</outputDirectory>
+            <directory>${project.basedir}/src/main/ressources</directory>
+            <includes>
+                <include>
+                    *.txt
+                </include>
+            </includes>
+            <excludes>
+                <exclude>README.txt</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+
+    <files>
+        <file>
+            <source>${project.basedir}/src/main/ressources/README.txt</source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+    </files>
+
+    <!--   pour récupérer un module de projet directement, ils sont déclarés dans le pom du projet livrables-->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>client</outputDirectory>
+            <outputFileNameMapping>banque-cli.jar</outputFileNameMapping>
+            <includes>
+                <!-- ${module.groupId}:${module.artifactId}:${module.type}-->
+                <include>fr.eni.mvnbook:banque-command:jar</include>
+            </includes>
+        </dependencySet>
+
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <outputFileNameMapping>banque-ws.ear</outputFileNameMapping>
+            <includes>
+                <include>*:ear</include>
+            </includes>
+        </dependencySet>
+
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <outputFileNameMapping>banque-web.war</outputFileNameMapping>
+            <includes>
+                <include>*:war</include>
+            </includes>
+        </dependencySet>
+    </dependencySets>
+</assembly>

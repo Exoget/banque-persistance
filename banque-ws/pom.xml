@@ -23,6 +23,7 @@
         <module>banque-client-webservice</module>
         <module>banque-ear-webservice</module>
         <module>banque-command</module>
+        <module>banque-livrables</module>
     </modules>
 
 </project>
