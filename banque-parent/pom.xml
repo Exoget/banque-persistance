@@ -87,6 +87,7 @@
     <scm>
         <connection>scm:git:https://github.com/Exoget/banque-persistance.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:Exoget/banque-persistance.git</developerConnection>
+        <url>https://github.com/Exoget/banque-persistance</url>
     </scm>
 
     <!--	<distributionManagement>-->
