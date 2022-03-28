@@ -457,3 +457,24 @@ Pour se connecter au référentiel distant, maven peut utiliser les protocoles (
 la configuration du protocole est faite avec le plugin ```maven-wagon```.
 
 On peut sécuriser les mots de passe maven avec le master password et puis avec les mots de passe serveur crypté avec le master password.
+## Gestion Artefact
+Le déploiement ver le depot distant doit se faire depuis un serveur dédié (Jenkins) et non pas depuis les machines de DEV.
+L'accès (credentials) se trouve sur ce serveur (Jenkins) dans les fichiers de conf Maven ```settings-security.xml```, setting.xml.
+### Déploiement local
+Un fichier ```meta-data.xml``` est créé à la racine de l'artefact en question, il définit la date de dernier déploiement ainsi que la liste des versions.
+
+Le meme fichier ```meta-data.xml``` est créé pour chaque version contenant les meme données, mais pour une seule version.
+
+### Déploiement distant
+C'est le meme principe, seulement on ajoute des fichiers d'empreinte numérique MD5, SHA1.
+
+:information_source:  local : écrasement des artefacts à chaque déploiement et on met à jour les metadata.
+:information_source:  distant : ajouter un nouveau fichier (timestamp + build number) au lieu de snapshoot.
+### Purge référentiel local
+```maven-dependency-plugin``` -> MOJO ```dependency:purge-local-repository``` -> purge référentiel local d'un projet et de ses dépendances transitives.
+
+:x:	 La commande ```clean``` vide seulement le repertoire target du projet. 
+## Gestionnaires de référentiel Maven
+Apache Archiva, Artifactory, Sonatype Nexus (voir 6.3 infrastructure avec un gestionnaire).
+
+![cap2](screnshot/cap2.PNG)
