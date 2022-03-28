@@ -477,4 +477,4 @@ C'est le meme principe, seulement on ajoute des fichiers d'empreinte numérique 
 ## Gestionnaires de référentiel Maven
 Apache Archiva, Artifactory, Sonatype Nexus (voir 6.3 infrastructure avec un gestionnaire).
 
-![cap2](screnshot/cap2.PNG)
+![cap2](screnshot/cap2.jpg)
