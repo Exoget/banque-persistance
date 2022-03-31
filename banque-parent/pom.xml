@@ -19,7 +19,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <!-- Dependencies Versions -->
-        <spring.framework.version>5.2.7.RELEASE</spring.framework.version>
+        <spring.framework.version>5.3.18</spring.framework.version>
         <hibernate.version>5.4.24.Final</hibernate.version>
         <hibernate.validator.version>5.4.3.Final</hibernate.validator.version>
         <junit.version>4.13.1</junit.version>
