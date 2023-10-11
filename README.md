@@ -253,6 +253,8 @@ Il est important de noter que tous les MOJO ne définissent pas obligatoirement 
 Heureusement le ``jar-nor-fork`` est configuré avec la phase ``package``.
 Ainsi, *si dans le POM aucune phase du cycle n’est associée au goal, comme dans l’exemple précédent, celle-ci ne sera pas appelée et le traitement non effectué.*
 
+Note : lien pour comprendre la diff entre le goal `jar` et `jar-no-fork` : https://stackoverflow.com/questions/10567551/difference-between-maven-source-plugin-jar-and-jar-no-fork-goal.
+En gros il y a le jar qui va relancer tous les plugins qui sont attachés à la phase generate-sources et ceux d'avant , donc il y a un grand risque de faire les chose en double.
 ##  Les dependences Maven:
 
 Nous avons six types de dépendances :
