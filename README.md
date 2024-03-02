@@ -391,13 +391,14 @@ On peut activer un profile par defaut en utilisant la balise ```<activationByDef
 
 ## Maven et Test 
 
-#### tests unitaires
+### tests unitaires
 C'est lié à la phase *test* de cycle de vie par defaut. Point d'entree pour les test unitaire maven. 
 
 * ${project.basedir}/src/test/java
 * ${project.basedir}/src/test/resources
 
-Le plugin utilisé pour lancer ces test : c'est ```maven-surefire-plugin``` ( goals : ```surefire:test``` ), le rapport sera dans ```${basedir}/target/surefire-reports```.
+(i) ```maven-surefire-plugin``` : est utilsé pour lancer les tests unitaire via le goal ```surefire:test```, le rapport sera dans ```${basedir}/target/surefire-reports```.
+https://maven.apache.org/surefire/maven-surefire-plugin/
 
 Le plugin est configuré pour chercher les classes suivantes :
 - **/Test*.java
@@ -408,8 +409,10 @@ Le plugin est configuré pour chercher les classes suivantes :
 Il est possible de lancer qu'une class dans la phase test, ou meme q'une seule methode dans une calsse.
 * ```mvn -Dtest=MaClass#methode test```
 
+(i) ```maven-surefire-report-plugin``` : est utilsé pour générer un rapoort sur l'état d'execution des tests dans un format html ( normalement est utilsé dans la pahse site ).
+https://maven.apache.org/surefire/maven-surefire-report-plugin/
 
-#### test d'integration
+### test d'integration
 C'est lié aux phases ci desous (cycle de vie par defaut)  :
 * *pre-integration-test*
 * *integration-test*
@@ -442,6 +445,11 @@ Une autre approche utilisée dans beaucoup de projets, c'est l'utilisation d'un 
 * ```-DfailIfNoTest=true``` : le projet doit avoir des tests unitaires sinon une exception sera déclenchée.
 * ```-DskipITs=true``` : annuler l'exécution des tests d'integration mais par leur compilation.
 * ```-DtestFailureIgnore=true``` : Ignore l'échec des tests unitaires.
+
+### Couverture de tests
+
+```jacoco-maven-plugin``` : Ce plugin est utilisé pour générer un rapport sur la couverture de test dans un projet, ce rapport peut etre exploiter par les outils de mesure de qualité tel que SonarQube.
+le rapport sera dans ```${project.build.directory}/site/jacoco```  ( sous le format xml, html, et csv ) 
 
 ## Release
 Lors d'une release, maven utilise implicitement les goals du plugin scm (checkin, sheckout, add ..) ,c'est pour ça il faut declare le bloc <scm> dans le pom.
